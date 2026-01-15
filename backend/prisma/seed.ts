@@ -3,7 +3,6 @@ import { PrismaClient, Status, Gender } from '@prisma/client';
 const prisma = new PrismaClient();
 
 const characters = [
-  // Fantasy Characters
   {
     name: 'Gandalf the Grey',
     image: 'https://ui-avatars.com/api/?name=Gandalf&background=6366f1&color=fff&size=200',
@@ -32,7 +31,6 @@ const characters = [
     gender: Gender.UNKNOWN,
     description: 'A mysterious creature with the body of a lion and the head of a human. Known for riddles.',
   },
-  // Sci-Fi Characters
   {
     name: 'Captain Nova',
     image: 'https://ui-avatars.com/api/?name=Nova&background=0ea5e9&color=fff&size=200',
@@ -61,7 +59,6 @@ const characters = [
     gender: Gender.FEMALE,
     description: 'A skilled tracker who operates in the outer rim. Never fails to capture her target.',
   },
-  // Mythological Characters
   {
     name: 'Thor Odinson',
     image: 'https://ui-avatars.com/api/?name=Thor&background=3b82f6&color=fff&size=200',
@@ -83,7 +80,6 @@ const characters = [
     gender: Gender.MALE,
     description: 'Egyptian god of mummification and the afterlife. Guides souls to the underworld.',
   },
-  // Modern Heroes
   {
     name: 'Sarah Storm',
     image: 'https://ui-avatars.com/api/?name=Sarah&background=06b6d4&color=fff&size=200',
@@ -112,7 +108,6 @@ const characters = [
     gender: Gender.MALE,
     description: 'A legendary military leader who died defending his nation. Remembered as a hero.',
   },
-  // Villains
   {
     name: 'Dark Lord Malachar',
     image: 'https://ui-avatars.com/api/?name=Malachar&background=7f1d1d&color=fff&size=200',
@@ -134,7 +129,6 @@ const characters = [
     gender: Gender.UNKNOWN,
     description: 'An enigmatic being who collects rare artifacts from across dimensions. Motives unclear.',
   },
-  // Additional Characters
   {
     name: 'Luna Silvermoon',
     image: 'https://ui-avatars.com/api/?name=Luna&background=c4b5fd&color=1f2937&size=200',
@@ -187,7 +181,6 @@ const characters = [
 ];
 
 async function main() {
-  // Check if data already exists
   const existingCount = await prisma.character.count();
 
   if (existingCount > 0) {
@@ -197,7 +190,6 @@ async function main() {
 
   console.log('[SEED] Seeding database...');
 
-  // Seed characters
   for (const character of characters) {
     await prisma.character.create({
       data: character,
@@ -212,7 +204,7 @@ main()
     await prisma.$disconnect();
   })
   .catch(async (e) => {
-    console.error('❌ Seeding failed:', e);
+    console.error('Seeding failed:', e);
     await prisma.$disconnect();
     process.exit(1);
   });

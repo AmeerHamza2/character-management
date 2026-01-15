@@ -1,0 +1,14 @@
+# Dependencies
+node_modules
+
+# Build output
+dist
+
+# Environment variables
+.env
+
+# Prisma generated
+/generated/prisma
+
+# GraphQL generated schema
+src/schema.gql
